@@ -1,0 +1,54 @@
+﻿@page
+@model GlamCarProject.Pages.CarSales.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarSale[0].Customers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarSale[0].SalePersons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarSale[0].AgreedAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarSale[0].SaleDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CarSale) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customers.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalePersons.SalePersonId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgreedAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CarSaleId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CarSaleId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CarSaleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
